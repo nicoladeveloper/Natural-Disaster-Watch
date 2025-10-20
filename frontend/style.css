@@ -1,0 +1,301 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  position: relative; 
+}
+
+/* Header Compacto (Com tamanhos levemente aumentados) */
+header {
+  background: linear-gradient(90deg, #1d3557, #457b9d);
+  color: white;
+  padding: 18px 15px; /* Ligeiramente mais padding */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Sombra mais forte */
+  flex-shrink: 0;
+  z-index: 1000; 
+  position: relative; 
+}
+
+/* Container principal do header para layout flex */
+#header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#title-group {
+    text-align: left;
+    margin-right: 20px;
+}
+
+header h1 {
+  font-size: 1.8rem; /* Aumentado */
+  margin: 0;
+}
+
+header p {
+  font-size: 1rem; /* Aumentado */
+  opacity: 0.95;
+  margin: 0;
+}
+
+/* Controles (Busca e Docs) */
+#controls-group {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Ligeiramente mais espaço entre elementos */
+}
+
+/* Busca */
+#search-container {
+  display: flex;
+  gap: 5px;
+}
+
+#search {
+  padding: 8px 12px; /* Aumentado */
+  width: 200px; /* Aumentado */
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem; /* Aumentado */
+}
+
+#btn-search {
+  padding: 8px 12px; /* Aumentado */
+  border-radius: 5px;
+  border: none;
+  background-color: #457b9d; 
+  color: white;
+  font-size: 1rem; /* Aumentado */
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#btn-search:hover {
+  background-color: #386f8f;
+}
+
+/* Link de Documentação */
+.header-btn {
+    padding: 8px 12px; /* Aumentado */
+    background-color: #e63946;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem; /* Aumentado */
+    transition: background 0.3s;
+    flex-shrink: 0;
+}
+.header-btn:hover {
+    background-color: #d62828;
+}
+
+/* Painel de Estatísticas - COMPACTO (Tamanhos ajustados) */
+#stats-panel {
+    display: flex;
+    justify-content: center;
+    gap: 35px; /* Aumentado o espaço entre as estatísticas */
+    margin: 5px 20px 0 0; 
+}
+
+.stat-item {
+    text-align: center;
+    line-height: 1.2;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.3rem; /* Aumentado para destaque */
+    font-weight: bold;
+    color: #e63946; 
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem; /* Aumentado para legibilidade */
+    opacity: 0.9;
+}
+
+/* Media Query para telas menores (responsividade) */
+@media (max-width: 768px) {
+    #header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    #title-group, #stats-panel, #controls-group {
+        margin: 5px 0;
+    }
+    #stats-panel {
+        order: 3; 
+        margin-top: 10px;
+    }
+    #controls-group {
+        order: 2;
+    }
+    #search {
+        width: 150px;
+    }
+}
+
+/* Mapa */
+main {
+  height: 0; 
+  width: 100%;
+}
+
+#map {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw; 
+  height: 100vh; 
+  z-index: 1; 
+}
+
+/* OTIMIZAÇÃO E CORREÇÃO FINAL DE PIXEL (MANTIDO) */
+.leaflet-container {
+  background: #aad3df !important; 
+  outline: none;
+}
+.leaflet-pane > .leaflet-tile-pane {
+  transform: translate3d(0, 0, 0); 
+}
+.leaflet-tile {
+  margin: -1px; 
+  transform: translateZ(0); 
+  border: none !important;
+  display: block; 
+}
+
+/* Estilos de Documentação PROFISSIONAL (Tamanhos Ajustados) */
+#documentacao {
+    position: relative; 
+    z-index: 2000;
+    background-color: #ffffff; 
+    color: #333;
+    padding: 80px 30px; /* Padding aumentado */
+    margin-top: 100vh; 
+    min-height: 50vh;
+    box-shadow: 0 -6px 15px rgba(0, 0, 0, 0.15); /* Sombra mais destacada */
+    max-width: 1200px; /* Largura máxima maior */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#documentacao h2 {
+    color: #1d3557;
+    font-size: 2.5rem; /* Aumentado */
+    border-bottom: 3px solid #e63946;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.doc-subtitle {
+    font-size: 1.1rem; /* Aumentado */
+    font-style: italic;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+#doc-cards-container {
+    display: flex;
+    gap: 30px; /* Espaço maior entre cards */
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.doc-card {
+    flex: 1 1 calc(33.33% - 30px); 
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-left: 6px solid #457b9d; /* Borda mais grossa */
+    padding: 25px; /* Padding aumentado */
+    border-radius: 8px; /* Borda mais suave */
+    min-width: 280px; /* Largura mínima aumentada */
+    transition: box-shadow 0.3s;
+}
+
+.doc-card h3 {
+    color: #1d3557;
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: 1.4rem; /* Aumentado */
+}
+
+.doc-card p, .doc-card li {
+    font-size: 1rem; /* Aumentado */
+}
+
+.doc-card code {
+    display: block;
+    background-color: #e9ecef;
+    padding: 8px 12px; /* Aumentado */
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 1rem; /* Aumentado */
+    color: #c0392b; 
+}
+
+.api-note {
+    margin-top: 18px;
+    padding: 12px;
+    border: 1px solid #ffc107;
+    background-color: #fff3cd;
+    color: #856404;
+    border-radius: 4px;
+    font-size: 0.95rem; /* Aumentado */
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.category-list li {
+    background-color: #457b9d;
+    color: white;
+    padding: 8px 15px; 
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.category-list li span {
+    font-weight: normal;
+    opacity: 0.9;
+    margin-right: 5px;
+}
+
+.footer-link-doc {
+    text-align: center;
+    margin-top: 50px;
+}
+.footer-link-doc a {
+    color: #e63946;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem; 
+}

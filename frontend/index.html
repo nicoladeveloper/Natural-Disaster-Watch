@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Seja bem vindo ao site de Prevenção a Desastres Naturais">
+  <title>Natural Disaster Watch 🌎</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="top-of-page"></div>
+  
+  <header>
+    <div id="header-content">
+        <div id="title-group">
+            <h1>🌎 Natural Disaster Watch</h1>
+            <p>Monitoramento de desastres (NASA EONET)</p>
+        </div>
+
+        <div id="stats-panel">
+            <div class="stat-item">
+                <span class="stat-value" id="stat-total">--</span>
+                <strong class="stat-label">Eventos Ativos</strong>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="stat-top-cat">--</span>
+                <strong class="stat-label">Top Categoria</strong>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="stat-timer">--</span>
+                <strong class="stat-label">Próx. Atualização</strong>
+            </div>
+        </div>
+
+        <div id="controls-group">
+            <div id="search-container">
+              <input type="text" id="search" placeholder="Buscar local (cidade/país)">
+              <button id="btn-search">🔍</button>
+            </div>
+            <a href="#documentacao" id="btn-docs" class="header-btn">ℹ️ API Docs</a>
+        </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="map"></div>
+    
+    <section id="documentacao">
+        <h2>📚 Documentação da API e Dados</h2>
+        <p class="doc-subtitle">Guia de consumo e referências sobre a fonte de dados utilizada.</p>
+        
+        <div id="doc-cards-container">
+            
+            <div class="doc-card">
+                <h3>Fonte de Dados</h3>
+                <p>Os dados são fornecidos pela **NASA EONET** (Earth Observatory Natural Event Tracker), que rastreia fenômenos naturais globalmente.</p>
+                <a href="https://eonet.gsfc.nasa.gov/" target="_blank" class="card-link">Acessar EONET Original</a>
+            </div>
+
+            <div class="doc-card">
+                <h3>Endpoint da API</h3>
+                <pre><code>GET http://127.0.0.1:8000/eventos</code></pre>
+                <p>Retorna uma lista de eventos ativos formatada em JSON, incluindo título, coordenadas, categoria e link.</p>
+                <p class="api-note"><strong>⚠️ Nota:</strong> Este endpoint é um *proxy* local para facilitar o desenvolvimento.</p>
+            </div>
+
+            <div class="doc-card">
+                <h3>Estrutura da Resposta</h3>
+                <p>Cada evento no array <code>"eventos"</code> possui:</p>
+                <ul>
+                    <li><code>titulo</code>: Nome resumido do evento.</li>
+                    <li><code>categoria</code>: Categoria original da NASA (e.g., Wildfires).</li>
+                    <li><code>coordenadas</code>: Array <code>[Longitude, Latitude]</code>.</li>
+                    <li><code>data</code>: Data de registro do evento.</li>
+                    <li><code>link</code>: URL para detalhes na fonte original.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>Categorias Mapeadas (PT-BR)</h3>
+        <ul class="category-list">
+            <li><span>Wildfires</span>: Fogo 🔥</li>
+            <li><span>Floods</span>: Enchente 💧</li>
+            <li><span>Earthquakes</span>: Terremoto 💥</li>
+            <li><span>Storms</span>: Tempestade 🌪️</li>
+            <li><span>Volcanoes</span>: Vulcão 🌋</li>
+        </ul>
+        
+        <p class="footer-link-doc"><a href="#top-of-page">↑ Voltar ao Mapa</a></p>
+    </section>
+  </main>
+</body>
+</html>
