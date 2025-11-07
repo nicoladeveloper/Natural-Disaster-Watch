@@ -2,11 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import requests
 from datetime import datetime, timedelta
-from fastapi.routing import APIRoute # Importação adicionada para filtro
+from fastapi.routing import APIRoute
 
 app = FastAPI()
 
-# --- Configurações de Cache ---
 CACHE_EXPIRATION_MINUTES = 5
 cache = {
     "data": None,
@@ -24,9 +23,8 @@ app.add_middleware(
 
 def fetch_events_from_eonet():
     try:
-        # Adicionado timeout de 10 segundos para não travar
         response = requests.get(EONET_API_URL, timeout=10) 
-        response.raise_for_status() # Lança erro para status HTTP ruins
+        response.raise_for_status()
         data = response.json()
         
         eventos_processados = []
@@ -35,7 +33,6 @@ def fetch_events_from_eonet():
             titulo = evento["title"]
             categoria = evento["categories"][0]["title"] if evento["categories"] else "Desconhecido"
             
-            # OTIMIZAÇÃO: Prioriza a geometria mais recente, se houver múltiplas
             geometry = evento["geometry"][-1] if evento["geometry"] else None 
             
             coordenadas = geometry["coordinates"] if geometry else None
@@ -71,7 +68,6 @@ def update_cache():
         else:
             print("Falha na atualização do cache. Usando dados antigos (se houver).")
 
-# Inicializa o cache na inicialização do servidor
 update_cache()
 
 @app.get("/")
@@ -80,7 +76,6 @@ def home():
 
 @app.get("/eventos")
 def get_eventos():
-    # CHAVE DA OTIMIZAÇÃO: Garante que os dados sejam verificados/atualizados antes de responder
     update_cache() 
     
     if cache["data"] is None:
@@ -88,18 +83,16 @@ def get_eventos():
         
     return cache["data"]
 
-# NOVO ENDPOINT DE DOCUMENTAÇÃO PROGRAMÁTICA
 @app.get("/api-docs")
 def list_endpoints():
    
     url_list = []
     
     for route in app.routes:
-        # Filtra apenas rotas HTTP normais (APIRoute)
         if isinstance(route, APIRoute):
             if route.path not in ["/openapi.json", "/docs", "/redoc", "/api-docs"]:
                 url_list.append({
-                    "method": list(route.methods)[0] if route.methods else "GET", # Pega o primeiro método
+                    "method": list(route.methods)[0] if route.methods else "GET",
                     "path": route.path
                 })
     return {"endpoints": url_list}
