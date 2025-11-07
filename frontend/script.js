@@ -64,8 +64,6 @@ function atualizarPainelEstatisticas(eventos) {
 
   
     totalElement.textContent = eventos.length;
-
-    // Contagem por Categoria
     const contagemCategorias = {};
     let maxCount = 0;
     let topCategoria = "Nenhuma";
@@ -85,7 +83,7 @@ function atualizarPainelEstatisticas(eventos) {
     segundosRestantes = INTERVALO_ATUALIZACAO_MS / 1000;
 }
 
-// Função para obter ações de prevenção por categoria
+
 function getAcoesPrevencao(categoria) {
     switch (categoria) {
         case "Wildfires": return `<p><strong>🔥 Ação de Prevenção (Fogo):</strong></p><ul><li>Evacue imediatamente se for instruído.</li><li>Feche portas e janelas.</li><li>Cubra chaminés e ventilações com telas não inflamáveis.</li></ul>`;
@@ -97,7 +95,7 @@ function getAcoesPrevencao(categoria) {
     }
 }
 
-// Função auxiliar para criar e adicionar o círculo ao CLUSTER
+
 function adicionarEventoAoMapa(ev) {
     if (!ev.coordenadas || ev.coordenadas.length < 2) return;
 
@@ -129,7 +127,6 @@ function adicionarEventoAoMapa(ev) {
     `);
 }
 
-// Função para carregar eventos iniciais
 async function carregarEventos() {
   try {
     const res = await fetch(API_URL); 
