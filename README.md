@@ -6,7 +6,7 @@
 🚀 Visão Geral do Projeto
 O Natural Disaster Watch é um sistema de monitoramento de desastres Naturais em tempo real (com otimização de cache) de eventos naturais ativos ao redor do mundo. Ele utiliza a API EONET (Earth Observatory Natural Event Tracker) da NASA como fonte de dados.
 
-<img src = "">
+<img height="300" src = "https://github.com/user-attachments/assets/c74f019c-1ecf-461c-b5a4-1f2df711571c">
 
 O projeto é dividido em dois módulos principais:
 
