@@ -14,7 +14,7 @@ O projeto é dividido em dois módulos principais:
 
 **Frontend (Web App):** Exibe os eventos em um mapa interativo utilizando Leaflet e MarkerCluster, permitindo a visualização agrupada dos desastres, busca de localização e exibição de estatísticas e ações de prevenção por categoria.
 
-✨ Destaques de Funcionalidade
+Destaques de Funcionalidade
 * **Mapa Interativo:** Visualização de desastres em um mapa de satélite, com agrupamento inteligente de marcadores (clusters).
 * **Previsão de Risco Realista:** Novo módulo de prevenção que avalia o risco de desastre na sua localização com base em coordenadas (GPS, CEP ou Busca textual), utilizando uma simulação geo-espacial que reflete a realidade das zonas de risco do planeta.
 * **Busca por Localização Avançada:** Permite buscar a localização por:
