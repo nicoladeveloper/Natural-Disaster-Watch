@@ -26,7 +26,7 @@ Destaques de Funcionalidade
 * **Ações de Prevenção:** Cada marcador exibe um popup com o evento, link de detalhes e dicas de prevenção específicas para a categoria (Ex: Wildfires, Floods, Storms).
 * **Notificações (Opcional):** Suporte a notificações nativas do navegador quando um novo evento é detectado.
 
-🛠️ Tecnologias Utilizadas
+Tecnologias Utilizadas
 
 | Componente | Linguagem/Framework | Bibliotecas Chave |
 | :--- | :--- | :--- |
